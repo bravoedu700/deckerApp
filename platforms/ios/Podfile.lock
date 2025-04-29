@@ -1,0 +1,25 @@
+PODS:
+  - OneSignalXCFramework (3.12.4):
+    - OneSignalXCFramework/OneSignalCore (= 3.12.4)
+    - OneSignalXCFramework/OneSignalExtension (= 3.12.4)
+    - OneSignalXCFramework/OneSignalOutcomes (= 3.12.4)
+  - OneSignalXCFramework/OneSignalCore (3.12.4)
+  - OneSignalXCFramework/OneSignalExtension (3.12.4):
+    - OneSignalXCFramework/OneSignalCore
+    - OneSignalXCFramework/OneSignalOutcomes
+  - OneSignalXCFramework/OneSignalOutcomes (3.12.4):
+    - OneSignalXCFramework/OneSignalCore
+
+DEPENDENCIES:
+  - OneSignalXCFramework (= 3.12.4)
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - OneSignalXCFramework
+
+SPEC CHECKSUMS:
+  OneSignalXCFramework: 087934ab0d4d7445fcf1c015c7c782359e26c020
+
+PODFILE CHECKSUM: 7b1ef1a80f2962ccce1cfbae07f98bde3e819346
+
+COCOAPODS: 1.12.1

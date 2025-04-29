@@ -24,7 +24,7 @@ import { CategoriesPage } from './pages/categories/categories';
 import { ProductosProvider } from "./services/productos";
 
  
-import OneSignal from 'onesignal-cordova-plugin';
+declare var OneSignal: any;
 
 
 
@@ -98,7 +98,13 @@ export class AppComponent implements OnInit {
     // OneSignal.Debug.setAlertLevel(6);
   
     // NOTE: Update the init value below with your OneSignal AppId.
-    OneSignal.init("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+    OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+
+
+    OneSignal.setNotificationOpenedHandler(function(jsonData: any) {
+      console.log('notification opened: ', jsonData);
+    });
+    
     
     
     let myClickListener = async function(event) {

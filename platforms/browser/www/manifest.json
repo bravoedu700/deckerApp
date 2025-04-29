@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Decker Camiones",
+  "short_name": "Decker Camiones",
+  "version": "com.bp.camiones",
+  "description": "Somos concesionario oficial Volvo Trucks, Volvo Cars, Volvo Buses, Renault Trucks, Acoplados y semirremolques Cormetal y Lambert. Contamos con agencias en las ciudades de Bahia Blanca, Quequén, Comodoro Rivadavia y Allen. Aquí podrás encontrar tantos unidades nuevas como usadas seleccionadas.",
+  "author": "BP Sistemas",
+  "icons": [],
+  "start_url": "index.html"
+}

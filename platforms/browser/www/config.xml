@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.bp.camiones" version="2.0.12" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Decker Camiones</name>
+    <description>Somos concesionario oficial Volvo Trucks, Volvo Cars, Volvo Buses, Renault Trucks, Acoplados y semirremolques Cormetal y Lambert. Contamos con agencias en las ciudades de Bahia Blanca, Quequén, Comodoro Rivadavia y Allen. Aquí podrás encontrar tantos unidades nuevas como usadas seleccionadas.</description>
+    <author email="info@bpsistemas.com" href="https://bpsistemas.com/">BP Sistemas</author>
+    <content src="index.html" />
+    <access launch-external="yes" origin="tel:*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <allow-intent href="*" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="android-targetSdkVersion" value="34" />
+    <preference name="android-compileSdkVersion" value="34" />
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="ScrollEnabled" value="false" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+</widget>
