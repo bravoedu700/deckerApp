@@ -1,0 +1,143 @@
+
+    /*.item-grey{
+        background-color: #efefef;
+        border-bottom: #ddd 1px solid;
+        padding: 15px;
+    }
+
+    .item-white{
+        background-color: #fff;
+        border-bottom: #ddd 1px solid;
+        padding: 20px;
+
+    }*/
+
+    h1{
+        font-weight: 200;
+        margin: 0px;
+    }
+
+    .item-money{
+        text-align: center;
+
+        i{
+            font-size: 2.5em;
+            margin: 15px;
+            color: #4e4e4e;
+        }
+    }
+    .item-money-desc{
+        color: #4e4e4e;
+        font-size: 1.2em;
+        font-weight: 200;
+        padding: 10px !important;
+
+    }
+
+    .swiper-pagination-bullet {
+    background: white;
+    }
+    .grey-text{
+        color: grey;
+    }
+    .label{
+        margin-bottom: 0;
+    }
+    .section-icon{
+        color: grey;
+        padding-right: 5px; 
+        font-size: 30px;
+    }
+    
+    .item-details-block{
+        display: block;
+    }
+
+    .item-details{
+        display: inline-block;
+    }
+
+    .item-title{
+        display: block;
+        font-size: 12px;
+        color: #999;
+    }
+
+    .item-content{
+        font-size: 16px;
+        line-height: 16px;
+        height: 16px;
+        overflow: hidden;
+        display: block;
+    }
+    .section-title{
+        font-size: 1em;
+        font-weight: 100;
+        display: block;
+        margin: 0px 0px 10px 0px !important;
+        
+    }
+    .section-information{
+        padding-right: 0;
+    }
+    .section-information i{
+        color: #09d261 !important;
+
+    }
+
+
+    .text-rounded{
+        padding: 4px 10px 4px 10px;
+        border-radius: 10px;
+        background: #ddd;
+        margin: 3px 3px 0px 0px;
+        display: inline-block;
+    }
+
+    .item-description{
+        color: grey;
+    }
+    .info, .user-info{
+        background-color: #cbcbcb;
+    }
+    .info-title{
+        font-size: 16px;
+        background-color: #989898;
+    }
+    .info-item{
+        font-size: 18px;
+    }
+
+    .warning{
+        margin: 5px 0 10px 0;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px;
+        color:white;
+        background-color: rgb(173, 0, 0);
+    }
+    .seller-info{
+        color: #4e4e4e;
+    }
+
+
+    .scroll-zoom-wrapper{
+        background-color: black;
+    }
+
+    .button .button-inner .icon {
+        margin-right:5px !important; 
+    }
+
+    .whatsapp-button{
+    color: #09d261;
+    border-color: #09d261;
+    }
+
+    .ml-style{
+        color: #3483fa;
+        background:none;
+        font-size:1.3em;
+        font-weight: 400;
+        i{ font-size: 1em}
+    }

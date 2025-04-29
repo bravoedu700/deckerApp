@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Seguro</ion-title> 
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content class="ion-padding">
+  <img class="img-header" src="../../assets/imgs/bg_mantenimiento.png" alt="">
+
+  <h1>Cotiza tu seguro</h1>
+  <p>Podras solicitar que mejoren la cotizacion actual de tu seguro.</p>
+
+  <form [formGroup]="todo" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label stacked>Nombre y Apellido:</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Teléfono:</ion-label>
+      <ion-input type="text" formControlName="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Localidad:</ion-label>
+      <ion-input type="text" formControlName="localidad"></ion-input>
+    </ion-item>
+
+    <ion-item> 
+      <ion-label stacked>Email:</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Detalle:</ion-label>
+      <ion-textarea type="text" placeholder="Describi tu unidad y/o flota" formControlName="mensaje"></ion-textarea>
+    </ion-item>
+
+    <br>
+    
+    <ion-button expand="block" (click)="logForm()" fill="solid" size="large" [disabled]="!todo.valid">Solicitar</ion-button>
+
+  </form>
+</ion-content>
+ 

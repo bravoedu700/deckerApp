@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row *ngIf=imagenes>
+      <ion-col no-padding>
+        <ion-slides pager autoplay="2000" loop>
+          <ion-slide *ngFor="let image of imagenes">
+            <div class="slide-container">
+              <img imageViewer src="{{image.image_url}}" />
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="item-grey">
+      <ion-col size="12">
+        <h1>{{agenciaData?.company_name}}</h1>
+        <p class="ml-style">Ruta Sur Trucks - Decker Camiones</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="item-white">
+      <ion-col size="12">
+        <span class="section-title">Descripción</span>
+      </ion-col>
+      <ion-col size="12" text-justify>
+
+        <span class="item-description">{{agenciaData?.company_description}}</span>
+
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+    <ion-row class="item-white">
+      <ion-col text-left class="section-information">
+        <ion-icon name="call-outline" class="ion-margin-end"></ion-icon>
+        <div class="item-details">
+          <span class="item-title">Teléfono:</span>
+          <span class="item-content">{{agenciaData?.company_phone}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="item-white">
+      <ion-col text-left class="section-information">
+        <ion-icon name="mail-outline" class="ion-margin-end"></ion-icon>
+        <div class="item-details">
+          <span class="item-title">Email:</span>
+          <span class="item-content">{{agenciaData?.company_email}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row class="item-white">
+      <ion-col text-left class="section-information">
+        <ion-icon name="time-outline" class="ion-margin-end"></ion-icon>
+        <div class="item-details">
+          <span class="item-title">Horarios:</span>
+          <span class="item-content">{{agenciaData?.company_schedule}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="item-white">
+      <ion-col text-left class="section-information">
+        <ion-icon name="navigate-outline" class="ion-margin-end"></ion-icon>
+        <div class="item-details">
+          <span class="item-title">Dirección:</span>
+          <span class="item-content">{{agenciaData?.company_address}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+  </ion-grid>
+</ion-content>

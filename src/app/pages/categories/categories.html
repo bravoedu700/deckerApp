@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar hideBackButton="false">
+    <ion-buttons slot="start">
+      <ion-menu-button menuToggle *ngIf="!selectcategoriaParam"></ion-menu-button>
+      <ion-back-button *ngIf="selectcategoriaParam" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Decker Camiones</ion-title>
+
+
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" (click)="openSearch()">
+        <i class="fas fa-search"></i>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- 
+     <ion-buttons slot="end">
+      <button (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  -->
+
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="card-background-page">
+  <!--<form (ngSubmit)="submit($event)" (keyup.enter)="submit($event)">-->
+  <form (ngSubmit)="submit($event)">
+    <ion-item class="search-box" *ngIf="searchbox">
+      <ion-input type="text" placeholder="Buscar en Decker Camiones" [(ngModel)]="querySearch"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+  </form>
+
+
+
+
+  <div *ngIf="!doneLoad">
+    <ion-card *ngFor="let i of [0,1,2,3,4,5,6,7,8]">
+      <ion-item>
+        <skeleton-item height="120px"></skeleton-item>
+      </ion-item>
+      <ion-card-content>
+        <skeleton-item height="24px" width="80%" style="margin-bottom: 12px"></skeleton-item>
+        <skeleton-item height="12px"></skeleton-item>
+        <skeleton-item height="12px" width="67%"></skeleton-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ofertas-component></ofertas-component>
+
+
+
+
+
+  <ion-grid class="home-grid">
+    <ion-row>
+      <ion-col class="home-col" col-3 text-center>
+
+        <ion-fab-button class="btn-home" color='light' (click)="mantenimiento()">
+          <ion-icon name="calendar-outline"></ion-icon>        </ion-fab-button>
+        <p class="btn-desc">Mantenimiento</p>
+
+      </ion-col>
+      <ion-col col-3 text-center> 
+
+        <ion-fab-button class="btn-home" color='light' (click)="turnos()">
+          <ion-icon name="alarm-outline"></ion-icon>
+
+        </ion-fab-button>
+        <p class="btn-desc">Turnos</p>
+
+      </ion-col>
+      <ion-col col-3 text-center>
+
+        <ion-fab-button class="btn-home" color='light' (click)="repuestos()">
+          <ion-icon name="build-outline"></ion-icon>
+
+        </ion-fab-button>
+        <p class="btn-desc">Repuestos</p>
+
+      </ion-col> 
+      <ion-col col-3 text-center>
+        
+        <ion-fab-button class="btn-home" color='light' (click)="whatsapp()">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+
+        </ion-fab-button>
+        <p class="btn-desc">Whatsapp</p>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <ion-card *ngFor="let category of categories" (click)="categorySelected(category)">
+    <img class="img-cat" src="{{ category.type_image }}" />
+    <div class="card-title">{{ category.type_name }} </div>
+  </ion-card>
+  <!--  <page-feedback [items]="categories" [error]="error" [page]="page"></page-feedback>
+-->
+
+</ion-content>

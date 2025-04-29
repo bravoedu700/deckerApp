@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543573890186",
+    "project_id": "decker2021-747b9",
+    "storage_bucket": "decker2021-747b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543573890186:android:1ac9f231c6db2e0f274973",
+        "android_client_info": {
+          "package_name": "com.bp.camiones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543573890186-esnrstv1bv4p5d1drp9nnren6c4plopi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCisr9k_GZL6dCxwjV0MENt2VbLLNPGUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543573890186-esnrstv1bv4p5d1drp9nnren6c4plopi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

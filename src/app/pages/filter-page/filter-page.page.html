@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar no-border-bottom>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Filtrar</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="reset()">
+        Borrar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="filters">
+
+  <div><img src="{{category?.type_image}}" width="100%"></div>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="bus"></ion-icon> Estado
+      </ion-label>
+      <ion-select [(ngModel)]="selectedStatus" multiple="false">
+        <ion-select-option value="Nuevo">Nuevo</ion-select-option>
+        <ion-select-option value="Usado">Usado</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="pricetag"></ion-icon> Marcas
+      </ion-label>
+      <ion-select [(ngModel)]="selectedBrand" multiple="false">
+        <ion-select-option *ngFor="let brand of brands" value="{{brand.brand_id}}">{{brand.brand_name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="toggle-outline"></ion-icon>Modelo
+      </ion-label>
+      <ion-select [(ngModel)]="selectedModel" multiple="false">
+        <ion-select-option *ngFor="let model of models" value="{{model.vehicle_model}}">{{model.vehicle_model}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="flask-outline"></ion-icon> Año
+      </ion-label>
+      <ion-select [(ngModel)]="selectedYear" multiple="false">
+        <ion-select-option *ngFor="let year of years" value="{{year.vehicle_year}}">{{year.vehicle_year}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--<ion-item>
+            <ion-label> <ion-icon name="skip-forward"></ion-icon> Hasta</ion-label>
+            <ion-select [(ngModel)]="selectedYearTo" multiple="false">
+              <ion-select-option selected value="">Elegir</ion-select-option>
+              <ion-select-option *ngFor="let year of years" value="{{year.vehicle_year}}">{{year.vehicle_year}}</ion-select-option>
+            </ion-select>
+          </ion-item>-->
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="color-palette"></ion-icon> Color
+      </ion-label>
+      <ion-select [(ngModel)]="selectedColor" multiple="false">
+        <ion-select-option *ngFor="let color of colors" value="{{color.vehicle_color}}">{{color.vehicle_color }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="resize"></ion-icon> Largo
+      </ion-label>
+      <ion-select [(ngModel)]="selectedLarge" multiple="false">
+        <ion-select-option *ngFor="let large of larges" value="{{large.vehicle_long}}">{{large.vehicle_long}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="color-fill"></ion-icon> Combustible
+      </ion-label>
+      <ion-select [(ngModel)]="selectedFuel" multiple="false">
+        <ion-select-option value="Nafta">Nafta</ion-select-option>
+        <ion-select-option value="Diesel">Diesel</ion-select-option>
+        <ion-select-option value="GNC">GNC</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="pin"></ion-icon> Agencia
+      </ion-label>
+      <ion-select [(ngModel)]="selectedCompany" multiple="false">
+        <ion-select-option *ngFor="let agencie of agencies" value="{{agencie.company_id}}">{{agencie.company_name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>
+<ion-footer>
+  <ion-button expand="block" color="primary" (click)='filter()'>
+    Buscar
+  </ion-button>
+
+</ion-footer>

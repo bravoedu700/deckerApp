@@ -1,0 +1,7 @@
+{
+  "name": "Decker.ar",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resultado</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ng-container *ngIf="items.length > 0">
+    <ion-card class="list-item" *ngFor="let item of items" (click)="itemSelected(item)">
+
+      <ion-card-content>
+        <ion-grid class="item-card">
+          <ion-row>
+            <ion-col col-5 col-sm-2 col-md-2 class="item-thumbnail">
+              <img *ngIf="item.vehicle_thumbnail_url" class="rounded-image" src="{{item.vehicle_thumbnail_url}}">
+              <img *ngIf="!item.vehicle_thumbnail_url" class="rounded-image" src="assets/imgs/no-image.jpg">
+            </ion-col>
+            <ion-col col-7 col-sm-10 col-md-10 class="card-right-content">
+              <div class="item-card-title">
+                <strong> {{ item.brand_name | uppercase }} {{item.vehicle_model | uppercase}} </strong>
+              </div>
+              <div class="item-small-description">
+                Año: {{ item.vehicle_year }} <br>
+                Agencia: {{ item.company_name }}
+              </div>
+
+              <span *ngIf="auth.isAuthenticated() && item.seller_price" small class="bottom-data bottom-data-big">
+                {{ item.seller_pricetype }} {{ item.seller_price }}
+              </span>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <div class="empty-result" *ngIf="items.length == 0">
+    <p>{{ msj }}</p>
+  </div>
+
+
+
+</ion-content>

@@ -1,0 +1,346 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons> 
+    <ion-title>{{ item?.brand_name | uppercase }} {{ item?.vehicle_model | uppercase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding" *ngIf="itemImages?.length > 0 ">
+      <ion-col class="ion-no-padding">
+        <ion-slides #myslides pager="false" (ionSlideDidChange)="getIndex($event)" [options]="slideOpts">
+                    
+          <ion-slide *ngIf="codeVideo != ''">    
+            <div class="slide-container">  
+              <iframe width="100%" height="100%" [src]="urlSafe" title="{{ item?.brand_name | uppercase }} {{ item?.vehicle_model | uppercase }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>  
+          </ion-slide> 
+
+          <ion-slide *ngFor="let image of itemImages; let i = index">
+            <div class="slide-container">
+              <img (click)="ovenViewer(image.image_url)" src="{{image.image_url}}" />
+            </div> 
+          </ion-slide> 
+
+        </ion-slides>
+        <div class="contador">
+          <span>{{ getActual() }}</span>/
+          <span>{{ getTotal() }}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="item-grey">
+      <ion-col size="12">
+        <h1>{{ item?.brand_name | uppercase }} {{item?.vehicle_model | uppercase}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row class="item-grey">
+
+      <ion-col size="6">
+        <span>AÑO: {{ item?.vehicle_year }}</span>
+      </ion-col>
+      <ion-col size="6" text-right>
+        <button (click)="share()" class="ml-style">
+          <ion-icon name="share-social-outline"></ion-icon>
+          <span>Compartir</span>
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="item-grey">
+      <ion-col size="12">
+        <ion-button expand="block" (click)='contact()'>
+          <ion-icon name="mail-outline" class="ion-margin-end"></ion-icon> Consultar
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button expand="block" fill="outline" color="success" (click)="whatsapp()"> 
+          <ion-icon name="logo-whatsapp" class="ion-margin-end"></ion-icon> Whatsapp
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="item-white">
+      <ion-col size="3" class="item-money">
+        <ion-icon name="chatbubbles-outline" size="large"></ion-icon>
+      </ion-col>
+      <ion-col size="9" class="item-money-desc">
+        <span>Consultanos por nuestra financiación exclusiva.</span>
+      </ion-col>
+    </ion-row>
+
+
+
+
+    <ion-row class="item-white">
+      <ion-col>
+        <span class="section-title">Ficha técnica</span>
+        <ion-row>
+          <ion-col>
+
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf="item.vehicle_state">
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Estado:</span>
+                  <span class="item-content">{{ item?.vehicle_state }}</span>
+                </div>
+
+              </ion-col>
+            </ion-row>
+
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_km>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Kilómetros:</span>
+                  <span class="item-content">{{ item?.vehicle_km }} km </span>
+                </div>
+              </ion-col>
+            </ion-row>
+
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.brand_name>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+
+
+                <div class="item-details">
+                  <span class="item-title">Marca:</span>
+                  <span class="item-content">{{ item?.brand_name }}</span>
+                </div>
+
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_color>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Color:</span>
+                  <span class="item-content">{{ item?.vehicle_color }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_fuel>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Combustible:</span>
+                  <span class="item-content">{{ item?.vehicle_fuel }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_power>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Potencia:</span>
+                  <span class="item-content">{{ item?.vehicle_power }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+          </ion-col>
+          <ion-col>
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_brake>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Frenos:</span>
+                  <span class="item-content">{{ item?.vehicle_brake }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_traction>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Tracción:</span>
+                  <span class="item-content">{{ item?.vehicle_traction }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_direction>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Dirección:</span>
+                  <span class="item-content">{{ item?.vehicle_direction }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+            <ion-row *ngIf=item.vehicle_power>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Motor:</span>
+                  <span class="item-content">{{ item?.vehicle_power }}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+
+
+            <!-- Dato de un item -->
+            <ion-row *ngIf=item.vehicle_city>
+              <ion-col text-left class="section-information">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+                <div class="item-details">
+                  <span class="item-title">Ciudad:</span>
+                  <span class="item-content">{{ item?.company_name }}</span>
+                </div>
+
+              </ion-col>
+            </ion-row>
+            <!-- Fin dato de un item -->
+
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="item-white" *ngIf="equipment ">
+      <ion-col>
+        <span class="section-title">Equipamiento</span>
+        <ion-row>
+          <ion-col>
+            <ng-container *ngFor="let eq of equipment">
+              <span class="text-rounded">{{eq}}</span>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="item-white">
+      <ion-col size="12">
+        <span class="section-title">Descripción</span>
+      </ion-col>
+      <ion-col size="12" text-justify>
+
+        <span *ngIf="item.vehicle_description" class="item-description">{{ item?.vehicle_description }}</span>
+        <span *ngIf="!item.vehicle_description" class="item-description">Sin información</span>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="item-white">
+      <ion-col size="12">
+        <span class="section-title">Agencia</span>
+      </ion-col>
+      <ion-col size="12">
+
+        <div class="item-details-block">
+          <span class="item-title">Ciudad:</span>
+          <span class="item-content">{{ item?.company_name }}.</span>
+        </div>
+        <div class="item-details">
+          <span class="item-title">Dirección:</span>
+          <span class="item-content">{{ item?.company_address }}. </span>
+        </div>
+        <div class="item-details">
+          <span class="item-title">Horario:</span>
+          <span class="item-content">{{ item?.company_schedule }}.</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+
+    <ion-row class="item-grey" *ngIf="auth.isAuthenticated()">
+      <ion-col size="12" class="item-warning">
+        <i class="material-icons-outlined">Atención!!!</i>
+      </ion-col> 
+      <ion-col size="12" class="item-money-desc">
+        <span>INFORMACIÓN PARA VENDEDORES</span>
+        <span class="item-title">Usuario actual: {{auth.getUsername()}}</span>
+      </ion-col>
+    </ion-row> 
+
+    <ion-row class="item-grey" *ngIf="auth.isAuthenticated()">
+
+      <ion-col size="12" text-center class="item-money-desc" *ngIf="item.seller_price ">
+
+
+        <span><b>{{ item.seller_pricetype }} {{ item.seller_price }}</b></span>
+
+      </ion-col>
+
+    </ion-row>
+    <ion-row class="item-grey" *ngIf="auth.isAuthenticated()">
+
+
+      <ion-col size="12" padding>
+        <div *ngIf="item.seller_ingreso" class="info-item">
+          <strong>INGRESO: </strong> {{ getDate(item.seller_ingreso) }}
+        </div>
+        <div *ngIf="item.seller_patent" class="info-item">
+          <strong>PATENTE: </strong> {{ item.seller_patent }}
+        </div>
+        <div *ngIf="item.seller_agencia" class="info-item">
+          <strong>A NOMBRE DE LA AGENCIA: </strong>
+          <span *ngIf="item.seller_agencia == '0'">NO</span>
+          <span *ngIf="item.seller_agencia == '1'">SI</span>
+        </div>
+        <div *ngIf="item.seller_owner" class="info-item">
+          <strong>EX DUEÑO: </strong> {{ item.seller_owner }}
+        </div>
+        <div *ngIf="item.seller_info" class="info-item">
+          <strong>INFORMACIÓN: </strong> {{ item.seller_info }}
+        </div>
+
+        <div class="warning" *ngIf="item.seller_warning">
+          <strong>ATENCION:</strong> {{item.seller_warning}}
+        </div>
+
+        <div class="info-images">
+          <ion-row *ngIf="privateImages?.length > 0">
+            <ion-col no-padding>
+              <ion-slides #slides2 pager="true" [options]="slideOpts">
+
+                <ion-slide *ngFor="let image of privateImages">
+                  <div class="slide-container">
+                    <img imageViewer src="{{image.image_url}}" />
+                  </div>
+                </ion-slide>
+
+              </ion-slides>
+
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header> 
+            <img src="./assets/imgs/DECKERlogoblanco.png" width="100%" alt="">
+          </ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of options; let i = index">
+            <ion-item (click)="selectOption(p)" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false">
+              <ion-label>{{ p.displayName }}</ion-label>
+            </ion-item>
+            <ng-container *ngIf="p.subItems !== undefined">
+              <ion-list class="ion-margin-start">
+                <ion-item *ngFor="let sub  of p.subItems" [routerLink]="[sub.url]" routerDirection="root">
+                  {{ sub.displayName }}
+                </ion-item>
+              </ion-list>
+            </ng-container>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app> 

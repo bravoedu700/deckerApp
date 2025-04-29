@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" ></ion-back-button>
+    </ion-buttons> 
+    <ion-title>WhatsApp</ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img class="img-header" src="../../assets/imgs/bg_repuestos.png" alt="">
+
+  <h1>Contacto</h1>
+  <p>Escribino tu consulta por WhatsApp.</p>
+
+  <form [formGroup]="todo" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label stacked>Nombre y Apellido</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Teléfono</ion-label>
+      <ion-input type="text" formControlName="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Localidad</ion-label>
+      <ion-input type="text" formControlName="localidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Mensaje</ion-label>
+      <ion-textarea type="text" formControlName="mensaje"></ion-textarea>
+    </ion-item>
+    <br>
+    
+    <ion-button expand="block" (click)="logForm()" fill="solid" size="large" [disabled]="!todo.valid">Enviar</ion-button>
+
+  </form>
+</ion-content>

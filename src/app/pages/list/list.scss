@@ -1,0 +1,83 @@
+.item-card-title{
+    font-size: 16px;
+}
+.item-small-description{
+    color: grey;
+}
+
+
+.item-card{
+    padding: 0px;
+}
+.item-thumbnail{
+    padding-left: 0;
+}
+.bottom-data{
+    position: absolute;
+    bottom: -5px;
+}
+.rounded-image{
+    border-radius: 5px;
+}
+.bottom-data-big{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 5px 0px 0;
+}
+.bottom-data-right, .bottom-data-big{
+    right: 0;
+}
+.bottom-data-left.activated, .bottom-data-left{
+    background: none;
+    box-shadow: initial;
+}
+
+.card-content{
+    padding: 10px;
+}
+.card-right-content, .item-thumbnail{
+    padding-top: 0;
+    background: none;
+}
+
+.scroll-content .list-item {
+    border-bottom: 1px solid rgb(179, 179, 179);
+    background: none;
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.scroll-content .list-item:active {
+    background-color: rgb(196, 196, 196);
+}
+
+.scroll-content  .list-item ion-card-content{
+    padding:10px;
+}
+
+
+.itemOFFLINE{
+    color: #CCC !important;
+}
+
+.imgOFFLINE{
+    filter: grayscale(1); 
+
+}
+
+.no-more-items{
+    color: #aaa;
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+}
+
+.precio-venta{
+    background-color: var(--ion-color-step-200);
+    color: var(--ion-text-color);
+    padding: 5px;
+    margin: 0px;
+    text-align: right;
+}

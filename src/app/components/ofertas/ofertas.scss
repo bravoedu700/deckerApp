@@ -1,0 +1,20 @@
+.swiper-slide img {
+    width: 100%!important;
+}
+
+.ofertas{
+    min-height: 50px;
+}
+.contador{
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    color: #CCCCCC;
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    display: inline-block;
+    z-index: 1000;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 10px;
+
+}

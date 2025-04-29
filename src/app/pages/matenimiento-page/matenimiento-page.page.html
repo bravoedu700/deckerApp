@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" ></ion-back-button>
+    </ion-buttons>   
+    <ion-title> Mantenimiento </ion-title> 
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img class="img-header" src="../../assets/imgs/bg_mantenimiento.png" alt="">
+
+  <h1>Solicitar Mantenimiento</h1>
+  <p>Podras solicitar un turno para el mantenimineto de tu unidad.</p>
+
+  <form [formGroup]="todo" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label stacked>Nombre y Apellido</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Teléfono</ion-label>
+      <ion-input type="text" formControlName="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Localidad</ion-label>
+      <ion-input type="text" formControlName="localidad"></ion-input>
+    </ion-item>
+
+    <ion-item> 
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>   
+      <ion-label stacked>Agencia</ion-label>
+      <ion-select placeholder="Selecione una" formControlName="agencia" >
+        <ion-select-option *ngFor="let agencia of agencias" value="{{agencia.company_name}}">{{agencia.company_name + ' (' + agencia.company_address + ')'}}</ion-select-option>
+      </ion-select>
+    </ion-item> 
+ 
+    <ion-item>
+      <ion-label stacked>Vehiculo</ion-label>
+      <ion-input type="text" formControlName="vehiculo"></ion-input>
+    </ion-item> 
+ 
+    <ion-item>
+      <ion-label stacked>Nro de chasis</ion-label>
+      <ion-input type="text" formControlName="chasis"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Fecha estimada</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH" formControlName="fecha_asistencia"></ion-datetime>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label stacked>Tipo de mantenimiento</ion-label> 
+      <ion-input type="text" formControlName="tipo_mantenimiento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Mensaje</ion-label>
+      <ion-textarea type="text" formControlName="mensaje"></ion-textarea>
+    </ion-item>
+    <br>
+    
+    <ion-button expand="block" (click)="logForm()" fill="solid" size="large" [disabled]="!todo.valid">Solicitar</ion-button>
+
+    <br><br><br><br><br>
+  </form>
+</ion-content>

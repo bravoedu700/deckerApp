@@ -1,0 +1,11 @@
+<div class="ofertas">
+  <ion-slides #slides pager="false" (ionSlideDidChange)="getIndex($event)" [options]="slideOpts">
+    <ion-slide *ngFor="let item of elements">
+      <img src="{{item.banner_url}}" />
+    </ion-slide>
+  </ion-slides>
+  <div class="contador">
+    <span>{{ getActual() }}</span>/
+    <span>{{ getTotal() }}</span>
+  </div>
+</div>

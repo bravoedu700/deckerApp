@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Acerca de</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-text-center">
+    <img class="logo" src="assets/imgs/DECKERlogoblanco.png" alt="Ícono de la aplicación">
+
+    <div class="app">Decker Camiones</div>
+    <div class="app">Versión {{version}}</div>
+    <div class="rights">© 2018 BP Sistemas, Todos los derechos reservados</div>
+    <button (click)="open()">Política de privacidad</button>
+  </div>
+</ion-content>
+<ion-footer class="ion-text-center">
+
+  <img src="../../../assets/imgs/bp_sistemas.png" width="50%" alt="" (click)="openbp()">
+
+</ion-footer>
