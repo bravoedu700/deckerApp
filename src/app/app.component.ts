@@ -9,6 +9,7 @@ import { AgenciasPagePage } from './pages/agencias-page/agencias-page.page';
 import { Component, OnInit } from '@angular/core';
 
 import { NavController, Platform } from '@ionic/angular';
+import { register } from "swiper/element/bundle"
 
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -26,7 +27,7 @@ import { ProductosProvider } from "./services/productos";
  
 declare var OneSignal: any;
 
-
+register();
 
 @Component({
   selector: 'app-root',

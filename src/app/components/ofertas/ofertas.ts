@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductosProvider } from '../../services/productos';
-
 
 @Component({
   selector: 'ofertas-component',
@@ -11,25 +9,27 @@ import { ProductosProvider } from '../../services/productos';
 
 export class OfertasComponent implements OnInit {
 
-  @ViewChild('slides', {static: true}) slides: IonSlides;
+  @ViewChild('swiper') 
+  swiperRef: ElementRef | undefined;
 
   elements: [] = [];
   doneLoad = false;
-  actual = 0;
+  actual = 1;
   total = 0;
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-    slidesPerView: 1,
-    autoplay:true,
-    loop: true,
-  };
 
   constructor(private prodsProvider: ProductosProvider) {
   }
 
   ngOnInit() {
     this.getBanners();
+  }
+
+  ngAfterViewInit() {
+    const swiperEl = this.swiperRef.nativeElement;
+
+    swiperEl.addEventListener('slidechange', (e: any) => {
+      this.getIndex(e);
+    });
   }
 
   getBanners() {
@@ -47,15 +47,19 @@ export class OfertasComponent implements OnInit {
     alert(i);
   }
 
-  getTotal(){ return this.total;}
-  getActual(){ 
-    if(this.actual > this.total )
-      this.actual = this.actual - this.total;
-    return this.actual;
-  }
+  getTotal() { return this.total;}
+
+  getActual() { return this.actual;}
+
   getIndex(e: any) {
-    this.slides.getActiveIndex().then((index: number) => {
-        this.actual = index;
-    });
+    const swiper = e.detail[0];
+    if(this.actual===this.total) {
+      this.actual = 1;
+      setTimeout(() => {
+        swiper.slideTo(0, 0); 
+      }, swiper.params.speed + 50); 
+    } else {
+      this.actual = swiper.activeIndex+1;
+    }
   }
 }

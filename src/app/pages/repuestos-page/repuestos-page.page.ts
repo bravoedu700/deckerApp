@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavController, ModalController, LoadingController, AlertController } from '@ionic/angular';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 import { ProductosProvider } from './../../services/productos';
 import { AgenciasProvider } from './../../services/agencias';
 import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
@@ -13,7 +13,7 @@ import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/n
 })
 export class RepuestosPagePage implements OnInit {
 
-  public todo: FormGroup;
+  public todo: UntypedFormGroup;
   loading: any;
   completed: boolean = false;
   datospersonales: any;
@@ -32,7 +32,7 @@ export class RepuestosPagePage implements OnInit {
  
   constructor(
     public navCtrl: NavController,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     public loadingCtrl: LoadingController,
     public alertController: AlertController,
     public modalCtrl: ModalController,

@@ -1,6 +1,6 @@
 import { ContactPagePage } from './../contact-page/contact-page.page';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, ModalController, LoadingController, IonSlides } from "@ionic/angular";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NavController, ModalController, LoadingController } from "@ionic/angular";
 import { AuthenticationProvider } from "../../services/authentication";
 import { ProductosProvider } from "../../services/productos";
 
@@ -11,10 +11,10 @@ import { ImageGalleryPage } from '../image-gallery/image-gallery.page';
 import { ToastController } from '@ionic/angular';
 
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
+import { ImageViewerComponent } from 'src/app/components/image-viewer/image-viewer';
 
 
-import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
-
+// import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 
 @Component({
   selector: 'app-item-page',
@@ -23,7 +23,8 @@ import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 })
 export class ItemPagePage implements OnInit {
 
-  @ViewChild('myslides') myslides: IonSlides;
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
 
 
   item: any = {};
@@ -35,15 +36,8 @@ export class ItemPagePage implements OnInit {
   codeVideo:any = '';
   loading: any;
   urlSafe: SafeResourceUrl;
-  actual = 0;
+  actual = 1;
   total = 0;
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-    slidesPerView: 1,
-    autoplay:true,
-    loop: true,
-  };
 
   constructor(
     public navCtrl: NavController,
@@ -95,6 +89,14 @@ export class ItemPagePage implements OnInit {
       this.equipment = this.item.vehicle_equipment.split(",");
     }
    
+  }
+
+  ngAfterViewInit() {
+    const swiperEl = this.swiperRef.nativeElement;
+
+    swiperEl.addEventListener('slidechange', (e: any) => {
+      this.getIndex(e);
+    });
   }
 
   getCode(url){
@@ -241,20 +243,20 @@ export class ItemPagePage implements OnInit {
 
   }
 
-  getTotal(){ 
-    return this.total;
-  }
+  getTotal() { return this.total;}
 
-  getActual(){ 
-    if(this.actual > this.total )
-      this.actual = this.actual - this.total;
-    return this.actual;
-  }
+  getActual() { return this.actual;}
 
-  getIndex(e: any) {    
-    this.myslides.getActiveIndex().then((index: number) => {
-        this.actual = index;
-    });
+  getIndex(e: any) {
+    const swiper = e.detail[0];
+    if(this.actual===this.total) {
+      this.actual = 1;
+      setTimeout(() => {
+        swiper.slideTo(0, 0); 
+      }, swiper.params.speed + 50); 
+    } else {
+      this.actual = swiper.activeIndex+1;
+    }
   }
 
   async ovenViewer(imgUrl) {
@@ -262,17 +264,17 @@ export class ItemPagePage implements OnInit {
     try {
       // Código asincrónico que puede generar una promesa rechazada
       const modal = await this.modalController.create({
-        component: ViewerModalComponent,
+        component: ImageViewerComponent,
         componentProps: {
           src: imgUrl,
-          scheme : 'dark',
-          title : this.item.vehicle_model.toUpperCase()
+          scheme: 'dark',
+          title: this.item.vehicle_model.toUpperCase()
         },
-        cssClass: 'ion-img-viewer ion-img-viewer-gallery',
+        cssClass: 'image-viewer-modal',
         keyboardClose: true,
         showBackdrop: true
       });
-  
+    
       return await modal.present();
     } catch (error) {
       // Manejo del error

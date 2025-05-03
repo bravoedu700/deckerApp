@@ -14,21 +14,21 @@
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding" *ngIf="itemImages?.length > 0 ">
       <ion-col class="ion-no-padding">
-        <ion-slides #myslides pager="false" (ionSlideDidChange)="getIndex($event)" [options]="slideOpts">
+        <swiper-container #swiper pagination="false" initial-slide="0" speed="400" slides-ver-view="1" autoplay="true">
                     
-          <ion-slide *ngIf="codeVideo != ''">    
+          <swiper-slide *ngIf="codeVideo != ''">    
             <div class="slide-container">  
               <iframe width="100%" height="100%" [src]="urlSafe" title="{{ item?.brand_name | uppercase }} {{ item?.vehicle_model | uppercase }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>  
-          </ion-slide> 
+          </swiper-slide> 
 
-          <ion-slide *ngFor="let image of itemImages; let i = index">
+          <swiper-slide *ngFor="let image of itemImages; let i = index">
             <div class="slide-container">
               <img (click)="ovenViewer(image.image_url)" src="{{image.image_url}}" />
             </div> 
-          </ion-slide> 
+          </swiper-slide> 
 
-        </ion-slides>
+        </swiper-container>
         <div class="contador">
           <span>{{ getActual() }}</span>/
           <span>{{ getTotal() }}</span>
@@ -327,15 +327,15 @@
         <div class="info-images">
           <ion-row *ngIf="privateImages?.length > 0">
             <ion-col no-padding>
-              <ion-slides #slides2 pager="true" [options]="slideOpts">
+              <swiper-container #slides2 pagination="true" initial-slide="0" speed="400" slides-per-view="1" autoplay="true">
 
-                <ion-slide *ngFor="let image of privateImages">
+                <swiper-slide *ngFor="let image of privateImages">
                   <div class="slide-container">
                     <img imageViewer src="{{image.image_url}}" />
                   </div>
-                </ion-slide>
+                </swiper-slide>
 
-              </ion-slides>
+              </swiper-container>
 
             </ion-col>
           </ion-row>
