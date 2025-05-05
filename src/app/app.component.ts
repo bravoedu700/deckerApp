@@ -11,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { register } from "swiper/element/bundle"
 
-import { Deeplinks } from '@ionic-native/deeplinks/ngx';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Deeplinks } from '@awesome-cordova-plugins/deeplinks/ngx';
+import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { AgenciasProvider } from './services/agencias';
 
 import { SeguroPage } from './pages/seguro/seguro.page';

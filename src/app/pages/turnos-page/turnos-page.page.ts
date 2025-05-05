@@ -3,7 +3,7 @@ import { ProductosProvider } from './../../services/productos';
 import { NavController, ModalController, LoadingController, AlertController } from '@ionic/angular';
 import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { AgenciasProvider } from './../../services/agencias';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @Component({

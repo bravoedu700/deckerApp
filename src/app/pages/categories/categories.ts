@@ -5,7 +5,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { ProductosProvider } from '../../services/productos';
 import { FeedbackProvider } from '../../services/feedback';
 import { ActivatedRoute } from '@angular/router';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { AgenciasProvider } from '../../services/agencias';
 
 @Component({

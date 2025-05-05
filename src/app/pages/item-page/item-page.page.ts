@@ -4,7 +4,7 @@ import { NavController, ModalController, LoadingController } from "@ionic/angula
 import { AuthenticationProvider } from "../../services/authentication";
 import { ProductosProvider } from "../../services/productos";
 
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { GlobalsProvider } from "../../services/globals";
 import { ActivatedRoute } from '@angular/router';
 import { ImageGalleryPage } from '../image-gallery/image-gallery.page';

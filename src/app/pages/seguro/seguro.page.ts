@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 import { ProductosProvider } from './../../services/productos';
 import { AgenciasProvider } from './../../services/agencias';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'app-seguro',

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import { AngularFirestore } from 'angularfire2/firestore';
-import { Firebase } from '@ionic-native/firebase/ngx';
+import { Firebase } from '@awesome-cordova-plugins/firebase/ngx';
 import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 
