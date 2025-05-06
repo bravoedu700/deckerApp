@@ -82,4 +82,10 @@ swiper-container {
     max-height: 100%;
   }
   
+  ion-input, ion-textarea, ion-select {
+    margin: 10px 0;
+  }
 
+  ion-item:first-child ion-input:first-child{
+    margin-top: 20px;
+  }
