@@ -1,5 +1,5 @@
 <div class="ofertas">
-  <swiper-container #swiper pagination="false" initial-slide="0" speed="400" slides-per-view="1" autoplay="true">
+  <swiper-container #swiper pagination="false" initial-slide="0" speed="400" slides-per-view="1" autoplay-disable-on-interaction="false" autoplay="true">
     <swiper-slide *ngFor="let item of elements">
       <img src="{{item.banner_url}}" />
     </swiper-slide>

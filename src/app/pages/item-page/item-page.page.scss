@@ -43,8 +43,8 @@
         padding: 10px !important;
     }
 
- 
-    
+
+
     .grey-text{
         color: grey;
     }
@@ -56,7 +56,7 @@
         padding-right: 5px; 
         font-size: 30px;
     }
-    
+
     .item-details-block{
         display: block;
     }
@@ -155,7 +155,7 @@
     }
 
 
-ion-slides{  
+swiper-container{  
     height: 40vh;
     ion-slide{
         height: 40vh;
@@ -168,6 +168,9 @@ ion-slides{
     }
 }
 
+img {
+    height: 100%;
+}
     
 
     .contador{

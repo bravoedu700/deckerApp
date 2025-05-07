@@ -24,7 +24,7 @@
 
           <swiper-slide *ngFor="let image of itemImages; let i = index">
             <div class="slide-container">
-              <img (click)="ovenViewer(image.image_url)" src="{{image.image_url}}" />
+              <img (click)="presentModalGallery(i)" src="{{image.image_url}}" />
             </div> 
           </swiper-slide> 
 

@@ -27,9 +27,11 @@ export class OfertasComponent implements OnInit {
   ngAfterViewInit() {
     const swiperEl = this.swiperRef.nativeElement;
 
-    swiperEl.addEventListener('slidechange', (e: any) => {
-      this.getIndex(e);
-    });
+    swiperEl.addEventListener('slidechange', this.handleSlideChange);
+  }
+
+  handleSlideChange = (e: any) => {
+    this.getIndex(e);
   }
 
   getBanners() {
@@ -60,6 +62,12 @@ export class OfertasComponent implements OnInit {
       }, swiper.params.speed + 50); 
     } else {
       this.actual = swiper.activeIndex+1;
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.swiperRef && this.swiperRef.nativeElement) {
+      this.swiperRef.nativeElement.removeEventListener('slidechange', this.handleSlideChange);
     }
   }
 }
