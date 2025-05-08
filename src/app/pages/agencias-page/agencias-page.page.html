@@ -17,9 +17,7 @@
       <ion-col no-padding>
         <swiper-container pagination="true" autoplay="true" loop="true">
           <swiper-slide *ngFor="let image of imagenes">
-            <div class="slide-container">
-              <img imageViewer src="{{image.image_url}}" />
-            </div>
+            <img imageViewer src="{{image.image_url}}" />
           </swiper-slide>
         </swiper-container>
       </ion-col>

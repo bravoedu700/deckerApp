@@ -17,15 +17,11 @@
         <swiper-container #swiper pagination="false" initial-slide="0" speed="400" slides-ver-view="1" autoplay="true">
                     
           <swiper-slide *ngIf="codeVideo != ''">    
-            <div class="slide-container">  
-              <iframe width="100%" height="100%" [src]="urlSafe" title="{{ item?.brand_name | uppercase }} {{ item?.vehicle_model | uppercase }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>  
+            <iframe width="100%" height="100%" [src]="urlSafe" title="{{ item?.brand_name | uppercase }} {{ item?.vehicle_model | uppercase }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </swiper-slide> 
 
           <swiper-slide *ngFor="let image of itemImages; let i = index">
-            <div class="slide-container">
-              <img (click)="presentModalGallery(i)" src="{{image.image_url}}" />
-            </div> 
+            <img (click)="presentModalGallery(i)" src="{{image.image_url}}" />
           </swiper-slide> 
 
         </swiper-container>
@@ -330,9 +326,7 @@
               <swiper-container #slides2 pagination="true" initial-slide="0" speed="400" slides-per-view="1" autoplay="true">
 
                 <swiper-slide *ngFor="let image of privateImages">
-                  <div class="slide-container">
-                    <img imageViewer src="{{image.image_url}}" />
-                  </div>
+                  <img imageViewer src="{{image.image_url}}" />
                 </swiper-slide>
 
               </swiper-container>
