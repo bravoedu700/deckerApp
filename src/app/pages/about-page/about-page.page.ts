@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
-import { AppVersion } from '@ionic-native/app-version/ngx';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @Component({

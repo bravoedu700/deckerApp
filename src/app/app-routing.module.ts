@@ -76,10 +76,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/filter-page/filter-page.module').then(m => m.FilterPagePageModule)
   },
   {
-    path: 'image-gallery',
-    loadChildren: () => import('./pages/image-gallery/image-gallery.module').then( m => m.ImageGalleryPageModule)
-  },
-  {
     path: 'seguro',
     loadChildren: () => import('./pages/seguro/seguro.module').then( m => m.SeguroPageModule)
   },

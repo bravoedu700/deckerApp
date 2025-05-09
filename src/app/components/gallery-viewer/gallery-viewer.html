@@ -1,0 +1,23 @@
+<ion-header [translucent]="true" [color]="scheme === 'dark' ? 'dark' : 'light'">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" [color]="scheme === 'dark' ? 'dark' : 'light'">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let image of images">
+        <div class="swiper-zoom-container">
+          <img [src]="image.src" [alt]="image.alt || ''" />
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</ion-content>
