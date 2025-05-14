@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-//import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+// import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
 
 @NgModule({
     schemas: [
@@ -48,7 +48,8 @@ import { CommonModule } from '@angular/common';
         FilterProvider,
         SocialSharing,
         AppVersion,
-        InAppBrowser
+        InAppBrowser,
+        // OneSignal
     ],
     bootstrap: [AppComponent]
 })

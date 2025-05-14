@@ -23,9 +23,9 @@ import { ToastController } from '@ionic/angular';
 
 import { CategoriesPage } from './pages/categories/categories';
 import { ProductosProvider } from "./services/productos";
+// import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
 
- 
-declare var OneSignal: any;
+declare var plugins: any;
 
 register();
 
@@ -52,10 +52,11 @@ export class AppComponent implements OnInit {
     private deeplinks: Deeplinks,
     public toastController: ToastController,
     public navCtrl: NavController,
-    private prodsProvider: ProductosProvider
+    private prodsProvider: ProductosProvider,
+    // private oneSignal: OneSignal
   ) { 
     platform.ready().then(() => {
-      //this.OneSignalInit();
+      this.OneSignalInit();
     });
   }
 
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      //this.OneSignalInit();
+      // this.OneSignalInit();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       //this.iniDeepLink();
@@ -72,52 +73,25 @@ export class AppComponent implements OnInit {
 
   }
 
-  /*
   OneSignalInit(){
-    // Uncomment to set OneSignal device logging to VERBOSE  
-    // OneSignal.setLogLevel(6, 0);
+  // Uncomment to set OneSignal device logging to VERBOSE  
+  //   OneSignal.Debug.setLogLevel(6);
+    
+  //   Uncomment to set OneSignal visual logging to VERBOSE  
+  //   OneSignal.Debug.setAlertLevel(6);
   
-    // NOTE: Update the setAppId value below with your OneSignal AppId.
-    OneSignal.setAppId("environment.2355dbbb-abaa-456a-8a77-e224b2b957b8");
-    OneSignal.setNotificationOpenedHandler(function(jsonData) {
+    plugins.OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+    plugins.OneSignal.setNotificationOpenedHandler(function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
     });
   
-    // Prompts the user for notification permissions.
-    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
-    OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
+    plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
         console.log("User accepted notifications: " + accepted);
     });
-  }
-  */
-  
-  OneSignalInit(): void {
-    // Uncomment to set OneSignal device logging to VERBOSE  
-    // OneSignal.Debug.setLogLevel(6);
+    console.log(1);
     
-    // Uncomment to set OneSignal visual logging to VERBOSE  
-    // OneSignal.Debug.setAlertLevel(6);
-  
-    // NOTE: Update the init value below with your OneSignal AppId.
-    OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
-
-
-    OneSignal.setNotificationOpenedHandler(function(jsonData: any) {
-      console.log('notification opened: ', jsonData);
-    });
-    
-    
-    
-    let myClickListener = async function(event) {
-          let notificationData = JSON.stringify(event);
-      };
-    OneSignal.Notifications.addEventListener("click", myClickListener);
-    
-  
-    // Prompts the user for notification permissions.
-    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
-    OneSignal.Notifications.requestPermission(true).then((accepted: boolean) => {
-      console.log("User accepted notifications: " + accepted);
+    plugins.OneSignal.getDeviceState(function(deviceState) {
+      console.log("Subscription ID (userId): " + deviceState.userId);
     });
   }
 

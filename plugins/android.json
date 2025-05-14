@@ -7,40 +7,28 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-androidx": {
-      "PACKAGE_NAME": "com.bp.camiones"
-    },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "com.bp.camiones"
-    },
     "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.bp.camiones"
+    },
+    "cordova-plugin-x-toast": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
-    "cordova-plugin-inappbrowser": {
+    "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
-    "cordova-plugin-ionic-keyboard": {
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.bp.camiones"
-    },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.bp.camiones"
-    },
-    "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "com.bp.camiones"
-    },
-    "cordova-plugin-x-toast": {
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
     "ionic-plugin-deeplinks": {
@@ -60,6 +48,12 @@
       "DEEPLINK_4_HOST": " ",
       "DEEPLINK_5_SCHEME": " ",
       "DEEPLINK_5_HOST": " ",
+      "PACKAGE_NAME": "com.bp.camiones"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.bp.camiones"
+    },
+    "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.bp.camiones"
     },
     "onesignal-cordova-plugin": {
