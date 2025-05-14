@@ -30,7 +30,6 @@ export class OfertasComponent implements OnInit {
 
   ngAfterViewInit() {
     const swiperEl = this.swiperRef.nativeElement;
-
     swiperEl.addEventListener('slidechange', this.handleSlideChange);
   }
 
@@ -63,14 +62,7 @@ export class OfertasComponent implements OnInit {
 
   getIndex(e: any) {
     const swiper = e.detail[0];
-    if(this.actual===this.total) {
-      this.actual = 1;
-      setTimeout(() => {
-        swiper.slideTo(0, 0); 
-      }, swiper.params.speed + 50); 
-    } else {
-      this.actual = swiper.activeIndex+1;
-    }
+    this.actual = swiper.activeIndex + 1
   }
 
   ngOnDestroy() {

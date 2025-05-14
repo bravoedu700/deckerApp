@@ -44,7 +44,4 @@ export class AgenciasPagePage implements OnInit {
       this.imagenes = imagenes;
     });
   }
-
-
-
 }
