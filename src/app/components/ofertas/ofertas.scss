@@ -7,10 +7,15 @@ swiper-slide img {
     height: 100%;
 }
 
+button {
+    width: 100%;
+}
+
 .ofertas{
     min-height: 50px;
     position: relative;
 }
+
 .contador{
     background-color: rgba($color: #000000, $alpha: 0.6);
     color: #CCCCCC;

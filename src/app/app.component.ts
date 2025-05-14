@@ -81,17 +81,13 @@ export class AppComponent implements OnInit {
   //   OneSignal.Debug.setAlertLevel(6);
   
     plugins.OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+    
     plugins.OneSignal.setNotificationOpenedHandler(function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
     });
   
     plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
         console.log("User accepted notifications: " + accepted);
-    });
-    console.log(1);
-    
-    plugins.OneSignal.getDeviceState(function(deviceState) {
-      console.log("Subscription ID (userId): " + deviceState.userId);
     });
   }
 

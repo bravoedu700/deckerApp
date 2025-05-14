@@ -5,6 +5,7 @@ import { OfertasComponent } from './ofertas/ofertas';
 import { CommonModule } from '@angular/common';
 import { ImageViewerComponent } from './image-viewer/image-viewer';
 import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @NgModule({
 	schemas: [
@@ -12,6 +13,7 @@ import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer';
 	],
 	declarations: [SkeletonItemComponent, OfertasComponent, ImageViewerComponent, GalleryViewerComponent],
 	imports: [CommonModule, IonicModule],
-	exports: [SkeletonItemComponent, OfertasComponent, ImageViewerComponent, GalleryViewerComponent]
+	exports: [SkeletonItemComponent, OfertasComponent, ImageViewerComponent, GalleryViewerComponent],
+	providers: [InAppBrowser],
 })
 export class ComponentsModule { }    

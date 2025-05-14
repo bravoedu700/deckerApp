@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductosProvider } from '../../services/productos';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'ofertas-component',
@@ -17,7 +18,10 @@ export class OfertasComponent implements OnInit {
   actual = 1;
   total = 0;
 
-  constructor(private prodsProvider: ProductosProvider) {
+  constructor(
+    private prodsProvider: ProductosProvider,
+    private iab: InAppBrowser
+  ) {
   }
 
   ngOnInit() {
@@ -32,6 +36,10 @@ export class OfertasComponent implements OnInit {
 
   handleSlideChange = (e: any) => {
     this.getIndex(e);
+  }
+
+  handleClick() {
+    this.iab.create('https://cordova.apache.org/docs/en/12.x/reference/cordova-plugin-inappbrowser/', '_system');
   }
 
   getBanners() {
