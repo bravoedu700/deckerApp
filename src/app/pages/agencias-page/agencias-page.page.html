@@ -15,13 +15,11 @@
   <ion-grid no-padding>
     <ion-row *ngIf=imagenes>
       <ion-col no-padding>
-        <ion-slides pager autoplay="2000" loop>
-          <ion-slide *ngFor="let image of imagenes">
-            <div class="slide-container">
-              <img imageViewer src="{{image.image_url}}" />
-            </div>
-          </ion-slide>
-        </ion-slides>
+        <swiper-container pagination="true" autoplay="true">
+          <swiper-slide *ngFor="let image of imagenes">
+            <img imageViewer src="{{image.image_url}}" />
+          </swiper-slide>
+        </swiper-container>
       </ion-col>
     </ion-row>
 

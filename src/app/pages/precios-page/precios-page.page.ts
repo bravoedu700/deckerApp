@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { IonicPage, NavController, NavParams } from '@ionic/angular';
 import { ProductosProvider } from '../../services/productos';
 import { AuthenticationProvider } from '../../services/authentication';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'app-precios-page',

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar [color]="scheme === 'dark' ? 'dark' : 'primary'">
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" [color]="scheme === 'dark' ? 'dark' : ''">
+  <div class="ion-padding image-container">
+    <ion-img [src]="src" (ionImgDidLoad)="imageLoaded = true"></ion-img>
+    <ion-spinner *ngIf="!imageLoaded"></ion-spinner>
+  </div>
+</ion-content>
+  

@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductosProvider } from '../../services/productos';
-
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'ofertas-component',
@@ -11,25 +10,35 @@ import { ProductosProvider } from '../../services/productos';
 
 export class OfertasComponent implements OnInit {
 
-  @ViewChild('slides', {static: true}) slides: IonSlides;
+  @ViewChild('swiper') 
+  swiperRef: ElementRef | undefined;
 
   elements: [] = [];
   doneLoad = false;
-  actual = 0;
+  actual = 1;
   total = 0;
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-    slidesPerView: 1,
-    autoplay:true,
-    loop: true,
-  };
 
-  constructor(private prodsProvider: ProductosProvider) {
+  constructor(
+    private prodsProvider: ProductosProvider,
+    private iab: InAppBrowser
+  ) {
   }
 
   ngOnInit() {
     this.getBanners();
+  }
+
+  ngAfterViewInit() {
+    const swiperEl = this.swiperRef.nativeElement;
+    swiperEl.addEventListener('slidechange', this.handleSlideChange);
+  }
+
+  handleSlideChange = (e: any) => {
+    this.getIndex(e);
+  }
+
+  handleClick() {
+    this.iab.create('https://cordova.apache.org/docs/en/12.x/reference/cordova-plugin-inappbrowser/', '_system');
   }
 
   getBanners() {
@@ -47,15 +56,18 @@ export class OfertasComponent implements OnInit {
     alert(i);
   }
 
-  getTotal(){ return this.total;}
-  getActual(){ 
-    if(this.actual > this.total )
-      this.actual = this.actual - this.total;
-    return this.actual;
-  }
+  getTotal() { return this.total;}
+
+  getActual() { return this.actual;}
+
   getIndex(e: any) {
-    this.slides.getActiveIndex().then((index: number) => {
-        this.actual = index;
-    });
+    const swiper = e.detail[0];
+    this.actual = swiper.activeIndex + 1
+  }
+
+  ngOnDestroy() {
+    if (this.swiperRef && this.swiperRef.nativeElement) {
+      this.swiperRef.nativeElement.removeEventListener('slidechange', this.handleSlideChange);
+    }
   }
 }

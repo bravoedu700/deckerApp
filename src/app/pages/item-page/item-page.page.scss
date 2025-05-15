@@ -43,8 +43,8 @@
         padding: 10px !important;
     }
 
- 
-    
+
+
     .grey-text{
         color: grey;
     }
@@ -56,7 +56,7 @@
         padding-right: 5px; 
         font-size: 30px;
     }
-    
+
     .item-details-block{
         display: block;
     }
@@ -155,20 +155,21 @@
     }
 
 
-ion-slides{  
+swiper-slide {  
     height: 40vh;
-    ion-slide{
-        height: 40vh;
-    }
-    
-    iframe{ 
-        position: relative;
-        width: 100vw; 
-        height: 40vh;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 }
 
-    
+@media screen and (min-width: 768px) {
+    swiper-slide {  
+        height: 50vh;
+    }
+}
 
     .contador{
         background-color: rgba($color: #000000, $alpha: 0.6);

@@ -1,30 +1,35 @@
 import { ContactPagePage } from './../contact-page/contact-page.page';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, ModalController, LoadingController, IonSlides } from "@ionic/angular";
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { NavController, ModalController, LoadingController } from "@ionic/angular";
 import { AuthenticationProvider } from "../../services/authentication";
 import { ProductosProvider } from "../../services/productos";
 
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { GlobalsProvider } from "../../services/globals";
 import { ActivatedRoute } from '@angular/router';
-import { ImageGalleryPage } from '../image-gallery/image-gallery.page';
 import { ToastController } from '@ionic/angular';
 
 import { DomSanitizer,SafeResourceUrl } from '@angular/platform-browser';
-
-
-import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
-
+import { ImageViewerComponent } from 'src/app/components/image-viewer/image-viewer';
+import { GalleryViewerComponent } from 'src/app/components/gallery-viewer/gallery-viewer';
 
 @Component({
   selector: 'app-item-page',
   templateUrl: './item-page.page.html',
   styleUrls: ['./item-page.page.scss'],
 })
-export class ItemPagePage implements OnInit {
+export class ItemPagePage implements OnInit, AfterViewInit {
+  private _swiperRef: ElementRef | undefined;
 
-  @ViewChild('myslides') myslides: IonSlides;
+  @ViewChild('swiper')
+  set swiperRef(ref: ElementRef | undefined) {
+    this._swiperRef = ref;
+    this.initializeSwiper();
+  }
 
+  get swiperRef(): ElementRef | undefined {
+    return this._swiperRef;
+  }
 
   item: any = {};
   itemId: any;
@@ -35,15 +40,8 @@ export class ItemPagePage implements OnInit {
   codeVideo:any = '';
   loading: any;
   urlSafe: SafeResourceUrl;
-  actual = 0;
+  actual = 1;
   total = 0;
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-    slidesPerView: 1,
-    autoplay:true,
-    loop: true,
-  };
 
   constructor(
     public navCtrl: NavController,
@@ -87,6 +85,8 @@ export class ItemPagePage implements OnInit {
       (error) => console.log(error)
     );
 
+    
+
     //this.whatsapp = this.urlWhatsapp();
 
     this.itemImages = [];
@@ -96,6 +96,23 @@ export class ItemPagePage implements OnInit {
     }
    
   }
+
+  ngAfterViewInit() {
+    this.initializeSwiper()
+  }
+
+  initializeSwiper() {
+    if (this._swiperRef && this._swiperRef.nativeElement) {
+      const swiperEl = this._swiperRef.nativeElement;
+      swiperEl.removeEventListener('slidechange', this.handleSlideChange);
+      swiperEl.addEventListener('slidechange', this.handleSlideChange);
+    } 
+  }
+
+  handleSlideChange = (e: any) => {
+    this.getIndex(e);
+  };
+
 
   getCode(url){
     const myArr = url.split("watch?v=");
@@ -117,8 +134,8 @@ export class ItemPagePage implements OnInit {
         else
           this.privateImages.push(image);
       });
-
-      this.total = this.itemImages.length;
+      
+      this.total = this.itemImages.length + (this.codeVideo ? 1 : 0);
     });
   }
 
@@ -152,21 +169,21 @@ export class ItemPagePage implements OnInit {
   }
 
   async presentModalGallery(i) {
-    try {
-      // Código asincrónico que puede generar una promesa rechazada
-      const modal = await this.modalController.create({
-        component: ImageGalleryPage,
-        cssClass: 'my-custom-class',
-        componentProps: {
-          'itemImages': this.itemImages,
-          'initalSlide' : i
-        }
-      });
-      return await modal.present();
-    } catch (error) {
-      // Manejo del error
-      console.error('Ocurrió un error:', error);
-    }
+    const imageObjects = this.itemImages.map(image => ({src: image.image_url}));
+  
+    const modal = await this.modalController.create({
+      component: GalleryViewerComponent,
+      componentProps: {
+        images: imageObjects,
+        initialIndex: i,
+        title: this.item.vehicle_model.toUpperCase()
+      },
+      cssClass: 'gallery-viewer-modal',
+      keyboardClose: true,
+      showBackdrop: true
+    });
+  
+    return await modal.present();
   }
 
   share(){
@@ -241,20 +258,13 @@ export class ItemPagePage implements OnInit {
 
   }
 
-  getTotal(){ 
-    return this.total;
-  }
+  getTotal() { return this.total;}
 
-  getActual(){ 
-    if(this.actual > this.total )
-      this.actual = this.actual - this.total;
-    return this.actual;
-  }
+  getActual() { return this.actual;}
 
-  getIndex(e: any) {    
-    this.myslides.getActiveIndex().then((index: number) => {
-        this.actual = index;
-    });
+  getIndex(e: any) {
+    const swiper = e.detail[0];
+    this.actual = swiper.activeIndex + 1;
   }
 
   async ovenViewer(imgUrl) {
@@ -262,17 +272,17 @@ export class ItemPagePage implements OnInit {
     try {
       // Código asincrónico que puede generar una promesa rechazada
       const modal = await this.modalController.create({
-        component: ViewerModalComponent,
+        component: ImageViewerComponent,
         componentProps: {
           src: imgUrl,
-          scheme : 'dark',
-          title : this.item.vehicle_model.toUpperCase()
+          scheme: 'dark',
+          title: this.item.vehicle_model.toUpperCase()
         },
-        cssClass: 'ion-img-viewer ion-img-viewer-gallery',
+        cssClass: 'image-viewer-modal',
         keyboardClose: true,
         showBackdrop: true
       });
-  
+    
       return await modal.present();
     } catch (error) {
       // Manejo del error
@@ -282,4 +292,9 @@ export class ItemPagePage implements OnInit {
     
   }
 
+  ngOnDestroy() {
+    if (this._swiperRef && this._swiperRef.nativeElement) {
+      this._swiperRef.nativeElement.removeEventListener('slidechange', this.handleSlideChange);
+    }
+  }
 }

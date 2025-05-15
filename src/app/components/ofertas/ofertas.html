@@ -1,9 +1,11 @@
 <div class="ofertas">
-  <ion-slides #slides pager="false" (ionSlideDidChange)="getIndex($event)" [options]="slideOpts">
-    <ion-slide *ngFor="let item of elements">
-      <img src="{{item.banner_url}}" />
-    </ion-slide>
-  </ion-slides>
+  <swiper-container #swiper speed="400" slides-per-view="1" autoplay-disable-on-interaction="false" autoplay="true">
+    <swiper-slide *ngFor="let item of elements">
+      <button (click)="handleClick()">
+        <img src="{{item.banner_url}}" />
+      </button>
+    </swiper-slide>
+  </swiper-container>
   <div class="contador">
     <span>{{ getActual() }}</span>/
     <span>{{ getTotal() }}</span>

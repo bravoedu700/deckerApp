@@ -36,8 +36,9 @@
   <!--<form (ngSubmit)="submit($event)" (keyup.enter)="submit($event)">-->
   <form (ngSubmit)="submit($event)">
     <ion-item class="search-box" *ngIf="searchbox">
-      <ion-input type="text" placeholder="Buscar en Decker Camiones" [(ngModel)]="querySearch"
-        [ngModelOptions]="{standalone: true}"></ion-input>
+      <ion-input class="ion-padding" type="text" placeholder="Buscar en Decker Camiones" [(ngModel)]="querySearch"
+        [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
   </form>
 

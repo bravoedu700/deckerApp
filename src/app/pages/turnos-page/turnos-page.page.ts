@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosProvider } from './../../services/productos';
 import { NavController, ModalController, LoadingController, AlertController } from '@ionic/angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { AgenciasProvider } from './../../services/agencias';
-import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser,InAppBrowserOptions } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/n
 
 export class TurnosPagePage implements OnInit {
   
-  todo: FormGroup;
+  todo: UntypedFormGroup;
   loading: any;
   completed: boolean = false;
   datospersonales: any;
@@ -32,7 +32,7 @@ export class TurnosPagePage implements OnInit {
   
   constructor(
     public navCtrl: NavController,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private prodsProvider: ProductosProvider,
     public loadingCtrl: LoadingController, 
     public alertController: AlertController,

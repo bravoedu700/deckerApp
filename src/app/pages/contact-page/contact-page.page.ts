@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductosProvider } from './../../services/productos';
 import { NavController, ModalController, LoadingController, AlertController } from '@ionic/angular';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-contact-page',
@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
  
 
 export class ContactPagePage implements OnInit {
-  public todo: FormGroup;
+  public todo: UntypedFormGroup;
   loading: any;
   completed: boolean = false;
   //item: any;
@@ -20,7 +20,7 @@ export class ContactPagePage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private prodsProvider: ProductosProvider,
     public loadingCtrl: LoadingController,
     public alertController: AlertController,
