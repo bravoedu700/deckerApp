@@ -154,7 +154,7 @@ export class CategoriesPage implements OnInit {
           setTimeout(() => {
             
             let text = 'Hola ' + msj;
-            let url = 'https://wa.me/' + nro +  '?text=' + encodeURI(text);
+            let url = 'https://wa.me/' + nro + '?text=' + encodeURI(text);
             const browser = this.iab.create(url,'_system', this.options);
 
           }, 1000);

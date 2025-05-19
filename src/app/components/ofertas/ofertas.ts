@@ -37,8 +37,8 @@ export class OfertasComponent implements OnInit {
     this.getIndex(e);
   }
 
-  handleClick() {
-    this.iab.create('https://cordova.apache.org/docs/en/12.x/reference/cordova-plugin-inappbrowser/', '_system');
+  handleClick(banner_link: string) {
+    this.iab.create(banner_link, '_system');
   }
 
   getBanners() {

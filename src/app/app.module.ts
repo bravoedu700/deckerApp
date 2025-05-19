@@ -19,7 +19,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-// import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
 
 @NgModule({
     schemas: [
@@ -49,7 +48,6 @@ import { CommonModule } from '@angular/common';
         SocialSharing,
         AppVersion,
         InAppBrowser,
-        // OneSignal
     ],
     bootstrap: [AppComponent]
 })

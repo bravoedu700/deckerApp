@@ -23,7 +23,6 @@ import { ToastController } from '@ionic/angular';
 
 import { CategoriesPage } from './pages/categories/categories';
 import { ProductosProvider } from "./services/productos";
-// import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
 
 declare var plugins: any;
 
@@ -66,29 +65,33 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.OneSignalInit();
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      if (this.platform.is('cordova')) {
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+      }
       //this.iniDeepLink();
     });
 
   }
 
   OneSignalInit(){
-  // Uncomment to set OneSignal device logging to VERBOSE  
-  //   OneSignal.Debug.setLogLevel(6);
+    // // Uncomment to set OneSignal device logging to VERBOSE  
+    // plugins.OneSignal.Debug.setLogLevel(6);
     
-  //   Uncomment to set OneSignal visual logging to VERBOSE  
-  //   OneSignal.Debug.setAlertLevel(6);
-  
-    plugins.OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+    // // Uncomment to set OneSignal visual logging to VERBOSE  
+    // plugins.OneSignal.Debug.setAlertLevel(6);
     
-    plugins.OneSignal.setNotificationOpenedHandler(function(jsonData) {
-        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-    });
-  
-    plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
-        console.log("User accepted notifications: " + accepted);
-    });
+    if (this.platform.is('cordova')) {
+      plugins.OneSignal.setAppId("2355dbbb-abaa-456a-8a77-e224b2b957b8");
+      
+      plugins.OneSignal.setNotificationOpenedHandler(function(jsonData) {
+          console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      });
+    
+      plugins.OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
+          console.log("User accepted notifications: " + accepted);
+      });
+    }
   }
 
 
